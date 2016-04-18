@@ -1,0 +1,24 @@
+- name: Swarm node is running
+  docker:
+    name: swarm-node
+    image: swarm
+    command:
+        join --advertise={{ ansible_eth1["ipv4"]["address"] }}:2375
+        {{ consul_url }}/{{ backend_prefix }}
+    env:
+      SERVICE_NAME: swarm-node
+  when: swarm_master is undefined
+  tags:
+    - swarm
+
+- name: Swarm master is running
+  docker:
+    name: swarm-master
+    image: swarm
+    ports: 2375:2375
+    command: manage {{ consul_url }}/{{ backend_prefix }}
+    env:
+      SERVICE_NAME: swarm-master
+  when: swarm_master is defined
+  tags:
+    - swarm

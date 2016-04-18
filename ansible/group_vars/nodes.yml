@@ -1,0 +1,8 @@
+ansible_user: vagrant
+ansible_ssh_pass: vagrant
+
+docker_opts: "-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
+
+consul_docker_image: "gliderlabs/consul-agent"
+consul_extra: "-join {{ swarm_master_ip }}"
+consul_server_ip: "{{ swarm_master_ip }}"

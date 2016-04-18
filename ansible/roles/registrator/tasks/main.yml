@@ -1,0 +1,9 @@
+- name: Container is running
+  docker:
+    name: registrator
+    image: gliderlabs/registrator
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+    command: -ip {{ ansible_eth1["ipv4"]["address"] }} {{ consul_url }}
+  tags:
+    - registrator

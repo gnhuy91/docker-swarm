@@ -1,0 +1,17 @@
+- name: docker-py is present
+  pip: name=docker-py state=present
+  tags:
+    - docker
+
+- name: Docker listen on port 2375 on Swarm nodes
+  lineinfile:
+    dest: /etc/default/docker
+    regexp: "^DOCKER_OPTS="
+    insertafter: "^#DOCKER_OPTS="
+    line: DOCKER_OPTS="-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
+  when: swarm_master is undefined
+  notify: restart docker
+  tags:
+    - docker
+
+- meta: flush_handlers

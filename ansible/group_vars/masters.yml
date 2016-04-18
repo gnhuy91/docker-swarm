@@ -1,0 +1,4 @@
+swarm_master: true
+
+consul_docker_image: "gliderlabs/consul-server"
+consul_extra: "-server -bootstrap -ui-dir /ui"
