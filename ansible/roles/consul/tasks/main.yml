@@ -1,9 +1,13 @@
-- name: Container is running
-  docker:
-    image: "{{ consul_docker_image }}"
-    name: consul
-    net: host
-    command: -advertise {{ ansible_eth1["ipv4"]["address"] }} {{ consul_extra }}
-    state: started
+- include: consul.yml
+  when: swarm_master
+
+- name: Consul server is reachable from nodes
+  wait_for:
+    host: "{{ swarm_master_ip }}"
+    port: 8301
+  when: not swarm_master
   tags:
     - consul
+
+- include: consul.yml
+  when: not swarm_master
