@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
   # swarm master
   config.vm.define "swarm-master" do |d|
     # run ansible playbook
-    d.vm.provision :shell, path: "exec_ansible.sh"
+    d.vm.provision :shell, path: "exec_ansible.sh", keep_color: true
     d.vm.hostname = "swarm-master"
     d.vm.network "private_network", ip: "#{IP_PREFIX}0"
   end
