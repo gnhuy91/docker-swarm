@@ -9,7 +9,7 @@
     regexp: "^DOCKER_OPTS="
     insertafter: "^#DOCKER_OPTS="
     line: DOCKER_OPTS="-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
-  when: swarm_master is undefined
+  when: not swarm_master
   notify: restart docker
   tags:
     - docker

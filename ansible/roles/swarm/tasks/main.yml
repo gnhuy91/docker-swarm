@@ -7,7 +7,7 @@
         {{ consul_url }}/{{ backend_prefix }}
     env:
       SERVICE_NAME: swarm-node
-  when: swarm_master is undefined
+  when: not swarm_master
   tags:
     - swarm
 
@@ -19,6 +19,6 @@
     command: manage {{ consul_url }}/{{ backend_prefix }}
     env:
       SERVICE_NAME: swarm-master
-  when: swarm_master is defined
+  when: swarm_master
   tags:
     - swarm
