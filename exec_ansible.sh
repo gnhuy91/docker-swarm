@@ -8,7 +8,7 @@ echo "Installing sshpass..."
 apt-get install -y -qq sshpass
 
 echo "Installing ansible..."
-pip install ansible
+pip install ansible==2.0.1.0
 
 echo "Run ansible playbook..."
 cd /vagrant/ansible
