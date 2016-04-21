@@ -3,7 +3,7 @@
     name: swarm-node
     image: swarm
     command:
-        join --advertise={{ ansible_eth1["ipv4"]["address"] }}:2375
+        join --advertise={{ ip }}:2375
         {{ consul_url }}/{{ backend_prefix }}
     env:
       SERVICE_NAME: swarm-node

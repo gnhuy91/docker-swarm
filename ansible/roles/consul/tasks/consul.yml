@@ -3,7 +3,7 @@
     image: "{{ consul_docker_image }}"
     name: consul
     net: host
-    command: -advertise {{ ansible_eth1["ipv4"]["address"] }} {{ consul_extra }}
+    command: -advertise {{ ip }} {{ consul_extra }}
     state: started
   tags:
     - consul

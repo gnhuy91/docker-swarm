@@ -4,6 +4,6 @@
     image: gliderlabs/registrator
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
-    command: -ip {{ ansible_eth1["ipv4"]["address"] }} {{ consul_url }}
+    command: -ip {{ ip }} {{ consul_url }}
   tags:
     - registrator
