@@ -3,7 +3,7 @@ ansible_ssh_pass: vagrant
 
 swarm_master: false
 
-docker_opts: "-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
+docker_opts: "-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock {{ cluster_opts }}"
 
 consul_docker_image: "gliderlabs/consul-agent"
 consul_extra: "-join {{ swarm_master_ip }}"
