@@ -4,6 +4,11 @@
     - docker
 
 - name: Docker listen on port 2375 on Swarm nodes
+- name: docker-compose is present
+  pip: name=docker-compose state=present
+  tags:
+    - docker
+
   lineinfile:
     dest: /etc/default/docker
     regexp: "^DOCKER_OPTS="
