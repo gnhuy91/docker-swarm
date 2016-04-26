@@ -4,10 +4,8 @@
 IP_PREFIX = "10.100.192.20"
 
 Vagrant.configure("2") do |config|
-  config.vm.synced_folder ".", "/vagrant",
-    :nfs => true,
-    :mount_options => ["dmode=700,fmode=600"]
   config.vm.box = "ubuntu/trusty64"
+  config.vm.synced_folder ".", "/vagrant", mount_options: ["dmode=700,fmode=600"]
   config.vm.provider "virtualbox" do |v|
     v.memory = 1024
     v.linked_clone = true if Vagrant::VERSION =~ /^1.8/
