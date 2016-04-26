@@ -20,15 +20,10 @@ Vagrant.configure("2") do |config|
   # swarm master
   config.vm.define "swarm-master" do |d|
     # run ansible playbook
-    d.vm.provision :shell, path: "exec_ansible.sh", keep_color: true
+    d.vm.provision :shell, path: "bootstrap_ansible.sh", keep_color: true
     d.vm.hostname = "swarm-master"
     d.vm.network "private_network", ip: "#{IP_PREFIX}0"
   end
-  # get docker
-  config.vm.provision "docker"
-  # install PyPI
-  config.vm.provision :shell, path: "bootstrap.sh"
-
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
   end

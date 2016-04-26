@@ -1,3 +1,24 @@
+- name: Add Docker repository and update apt cache
+  apt_repository:
+    repo: deb https://apt.dockerproject.org/repo ubuntu-trusty main
+    update_cache: yes
+    state: present
+  tags:
+    - docker
+
+- name: Docker is present
+  apt:
+    name: docker-engine
+    state: latest
+    force: yes
+  tags:
+    - docker
+
+- name: python-pip is present
+  apt: name=python-pip state=present
+  tags:
+    - docker
+
 - name: docker-py is present
   pip: name=docker-py state=present
   tags:
