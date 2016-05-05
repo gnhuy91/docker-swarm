@@ -7,4 +7,3 @@ docker_opts: "-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock {{ cluster_op
 
 consul_docker_image: "gliderlabs/consul-agent"
 consul_extra: "-join {{ swarm_master_ip }}"
-consul_server_ip: "{{ swarm_master_ip }}"
