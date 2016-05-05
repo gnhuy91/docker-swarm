@@ -3,4 +3,4 @@ swarm_master: true
 docker_opts: "{{ cluster_opts }}"
 
 consul_docker_image: "gliderlabs/consul-server"
-consul_extra: "-server -bootstrap -ui"
+consul_extra: "-bootstrap -ui"
