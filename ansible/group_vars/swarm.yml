@@ -1,6 +1,3 @@
 discovery_backend: "consul"
 consul_http_port: 8500
 consul_url: "{{ discovery_backend }}://{{ ip }}:{{ consul_http_port }}"
-backend_prefix: "swarm"
-
-cluster_opts: "--cluster-store={{ consul_url }}/{{ backend_prefix }} --cluster-advertise={{ ip }}:2375"

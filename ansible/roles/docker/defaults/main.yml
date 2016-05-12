@@ -1,0 +1,1 @@
+cluster_opts: "--cluster-store={{ consul_url }}/{{ backend_prefix }} --cluster-advertise={{ ip }}:2375"
