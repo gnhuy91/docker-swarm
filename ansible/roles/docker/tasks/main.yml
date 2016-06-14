@@ -35,15 +35,13 @@
     regexp: "^DOCKER_OPTS="
     insertafter: "^#DOCKER_OPTS="
     line: DOCKER_OPTS="{{ docker_opts }}"
-  register: file_result
   tags:
-    - docker
+    - swarm
 
 - name: vagrant user is added to the docker group
   user:
     name: vagrant
     group: docker
-  register: user_result
   tags:
     - docker
 
@@ -51,6 +49,5 @@
   service:
     name: docker
     state: restarted
-  when: file_result|changed or user_result|changed
   tags:
     - docker
