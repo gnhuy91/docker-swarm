@@ -1,8 +1,13 @@
 # docker-swarm
 
 ### Getting started
-- Connect to `swarm-master`
+- Start Vagrant machines
+```console
+vagrant up
 ```
+
+- Connect to `swarm-master`
+```console
 vagrant ssh swarm-master
 ```
 
