@@ -2,6 +2,7 @@
   docker:
     name: registrator
     image: gliderlabs/registrator
+    net: host
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
     command: -ip {{ ip }} {{ consul_url }}
