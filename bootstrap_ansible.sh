@@ -6,10 +6,9 @@ trap 'exit' ERR
 
 echo "Installing Ansible..."
 apt-get install -y -qq --reinstall ca-certificates
-apt-get install -y --force-yes -qq software-properties-common
-apt-add-repository -y ppa:ansible/ansible
-apt-get update -qq
-apt-get install -y -qq ansible
+apt-get install -y -qq python-pip python-dev libffi-dev libssl-dev sshpass
+pip install -q --upgrade setuptools
+pip install -q ansible
 
 echo "Run Ansible playbook..."
 cd /vagrant/ansible && ansible-playbook swarm.yml -i hosts
